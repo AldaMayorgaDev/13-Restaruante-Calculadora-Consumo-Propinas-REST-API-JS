@@ -19,9 +19,30 @@ function guardarCliente() {
         mostrarAlerta('Todos los campos son obligatorios');
         return;
     } 
-        console.log('Todos los campos estan llenos');
+        //console.log('Todos los campos estan llenos');
+
+
+       /*  Asignar datos del formulario al cliente */
+        cliente = {...cliente, mesa, hora}
+        console.log('cliente', cliente);
+
+        /* Ocultar modal */
+        const modalFormulario = document.querySelector('#formulario');
+        const modalBootstrap = bootstrap.Modal.getInstance(modalFormulario);
+        modalBootstrap.hide();
+
+
+        /* Mostrar las secciones */
+        mostrarSecciones();
+
 }
 
+function mostrarSecciones() {
+    const seccionesOcultas = document.querySelectorAll('.d-none');
+    seccionesOcultas.forEach(seccion => {
+        return seccion.classList.remove('d-none')
+    })
+}
 
 /* Funciones comunes */
 function mostrarAlerta(mensaje) {
